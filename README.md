@@ -6,9 +6,9 @@ A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application and want to learn some Getx statemanegment and more 
+This project is a starting point for a Flutter application and want to learn some Getx state management and more 
 
 
-A few resources to get you started if this is your first Flutter project:
+
 
 
