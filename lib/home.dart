@@ -1,0 +1,62 @@
+import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:weight_track_app/graph.dart';
+import 'package:weight_track_app/history.dart';
+
+import 'controller.dart';
+
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key, required this.title}) : super(key: key);
+  final String title;
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final controller = Get.put(Controller());
+  var _bottomNavIndex = 0;
+  final iconList = <IconData>[
+    Icons.auto_graph_outlined,
+    Icons.notes_outlined,
+  ];
+  final pageScreens = [
+    GraphScreen(),
+    HistoryScreen(),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: GraphScreen(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: const Icon(Icons.add),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: AnimatedBottomNavigationBar(
+        icons: iconList,
+        activeIndex: _bottomNavIndex,
+        gapLocation: GapLocation.center,
+        onTap: (index) => setState(
+          () => _bottomNavIndex = index,
+        ),
+        notchSmoothness: NotchSmoothness.verySmoothEdge,
+      ),
+    );
+  }
+}
+
+class Second extends StatelessWidget {
+  final Controller ctrl = Get.find();
+
+  Second({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Text('${ctrl.counter}'),
+      ),
+    );
+  }
+}
