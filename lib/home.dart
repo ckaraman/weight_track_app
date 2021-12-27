@@ -30,11 +30,16 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: GraphScreen(),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.black,
         onPressed: () {},
         child: const Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: AnimatedBottomNavigationBar(
+        activeColor: Colors.white,
+        inactiveColor: Colors.grey,
+        backgroundColor: Colors.black,
+        height: Get.height / 13,
         icons: iconList,
         activeIndex: _bottomNavIndex,
         gapLocation: GapLocation.center,

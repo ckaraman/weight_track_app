@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Weight Track',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        appBarTheme: const AppBarTheme(backgroundColor: Colors.black),
       ),
       home: const HomePage(title: 'Weight Tracker'),
     );
