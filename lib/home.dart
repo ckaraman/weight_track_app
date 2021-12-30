@@ -15,12 +15,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final controller = Get.put(Controller());
-  var _bottomNavIndex = 0;
+  int _bottomNavIndex = 0;
   final iconList = <IconData>[
     Icons.auto_graph_outlined,
     Icons.notes_outlined,
   ];
-  final pageScreens = [
+  List<Widget> selectedScreen = <Widget>[
     GraphScreen(),
     HistoryScreen(),
   ];
@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GraphScreen(),
+      body: selectedScreen[_bottomNavIndex],
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.black,
         onPressed: () {},
