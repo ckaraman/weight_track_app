@@ -1,10 +1,10 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:weight_track_app/graph.dart';
-import 'package:weight_track_app/history.dart';
+import 'package:weight_track_app/views/graph.dart';
+import 'package:weight_track_app/views/history.dart';
 
-import 'controller.dart';
+import '../view-models/controller.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key, required this.title}) : super(key: key);
@@ -46,7 +46,7 @@ class _HomePageState extends State<HomePage> {
         onTap: (index) => setState(
           () => _bottomNavIndex = index,
         ),
-        notchSmoothness: NotchSmoothness.verySmoothEdge,
+        notchSmoothness: NotchSmoothness.smoothEdge,
       ),
     );
   }
@@ -60,7 +60,7 @@ class Second extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text('${ctrl.counter}'),
+        child: Text(''),
       ),
     );
   }

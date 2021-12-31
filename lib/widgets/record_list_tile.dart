@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:weight_track_app/models/record.dart';
 
-class RecordListTile extends StatelessWidget {
-  const RecordListTile({Key? key}) : super(key: key);
+class RecordListTile extends StatefulWidget {
+  final Record record;
+  const RecordListTile({Key? key, required this.record}) : super(key: key);
 
+  @override
+  State<RecordListTile> createState() => _RecordListTileState();
+}
+
+class _RecordListTileState extends State<RecordListTile> {
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -12,7 +19,7 @@ class RecordListTile extends StatelessWidget {
         padding: const EdgeInsets.only(top: 8, bottom: 8),
         child: ListTile(
           leading: Text(
-            DateFormat("EEE,MMM d").format(DateTime.now()),
+            DateFormat("EEE,MMM d").format(widget.record.datetime),
           ),
           title: const Center(
               child: Text(
