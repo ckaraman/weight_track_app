@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:weight_track_app/models/record.dart';
+import 'package:weight_track_app/view-models/controller.dart';
 
 class RecordListTile extends StatefulWidget {
   final Record record;
@@ -11,6 +13,8 @@ class RecordListTile extends StatefulWidget {
 }
 
 class _RecordListTileState extends State<RecordListTile> {
+  final Controller _controller = Get.find();
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -18,34 +22,42 @@ class _RecordListTileState extends State<RecordListTile> {
       child: Padding(
         padding: const EdgeInsets.only(top: 8, bottom: 8),
         child: ListTile(
-          leading: Text(
-            DateFormat("EEE,MMM d").format(widget.record.datetime),
-          ),
-          title: const Center(
-              child: Text(
-            '75',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-          )),
-          trailing: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: const [
-              IconButton(
-                onPressed: null,
-                icon: Icon(
-                  Icons.edit,
-                  color: Colors.grey,
-                ),
-              ),
-              IconButton(
-                  onPressed: null,
-                  icon: Icon(
-                    Icons.delete,
-                    color: Colors.red,
-                  ))
-            ],
-          ),
+          leading: _buildDate(),
+          title: _buildWeight(),
+          trailing: _buildIcons(),
         ),
       ),
     );
   }
+
+  Row _buildIcons() => Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const IconButton(
+            onPressed: null,
+            icon: Icon(
+              Icons.edit,
+              color: Colors.grey,
+            ),
+          ),
+          IconButton(
+              onPressed: () {
+                _controller.deleteRecord(widget.record);
+              },
+              icon: const Icon(
+                Icons.delete,
+                color: Colors.red,
+              ))
+        ],
+      );
+
+  Center _buildWeight() => Center(
+          child: Text(
+        ' ${widget.record.weight}',
+        style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+      ));
+
+  Text _buildDate() => Text(
+        DateFormat("EEE,MMM d").format(widget.record.datetime),
+      );
 }
