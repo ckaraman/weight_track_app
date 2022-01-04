@@ -1,6 +1,7 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:weight_track_app/views/add_record.dart';
 import 'package:weight_track_app/views/graph.dart';
 import 'package:weight_track_app/views/history.dart';
 
@@ -21,8 +22,8 @@ class _HomePageState extends State<HomePage> {
     Icons.notes_outlined,
   ];
   List<Widget> selectedScreen = <Widget>[
-    GraphScreen(),
-    HistoryScreen(),
+    const GraphScreen(),
+    const HistoryScreen(),
   ];
 
   @override
@@ -31,7 +32,9 @@ class _HomePageState extends State<HomePage> {
       body: selectedScreen[_bottomNavIndex],
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.black,
-        onPressed: () {},
+        onPressed: () {
+          Get.to(() => const AddRecordView());
+        },
         child: const Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
